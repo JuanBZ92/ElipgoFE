@@ -1,0 +1,21 @@
+<div class="container" *ngIf="access.role === 'none'">
+    <div class="topBackground"></div>
+    <div class="bottomBackground">
+        <div class="box">
+            <label class="text">Hola! Por favor ingrese su usuario y contraseña.</label>
+            <form [formGroup]="userAccess" (ngSubmit)="login()">
+                <div class="inputs">
+                    <input type="text" formControlName="username" placeholder="Usuario o Email" required>
+                </div>
+                <div class="inputs">
+                    <input type="password" formControlName="password"  placeholder="Contraseña" required>
+                </div>
+                <div class="buttons">
+                    <button type="submit" [disabled]="!userAccess.valid">Continuar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-user-login [loginAccess]="access" (returnAccess)="returnAccess($event)" *ngIf="access.role === 'user'"></app-user-login>
+<app-admin-login [loginAccess]="access" (returnAccess)="returnAccess($event)" *ngIf="access.role === 'admin'"></app-admin-login>

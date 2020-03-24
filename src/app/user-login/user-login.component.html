@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="topBackground"></div>
+    <div class="bottomBackground">
+        <div class="box">
+            <label class="text">Hola! Por favor complete los campos requeridos.</label>
+            <form [formGroup]="userForm" (ngSubmit)="submitItem()">
+                <div class="selects">
+                    <mat-form-field appearance="fill">
+                        <mat-select [(ngModel)]="itemType" [formControl]="itemTypeControl">
+                            <mat-option value="Stores">Stores</mat-option>
+                            <mat-option value="Articles">Articles</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="itemType === 'Articles'" class="Information">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Id: </mat-label>
+                        <input matInput [(ngModel)]="id" formControlName="idControl" type="number">
+                    </mat-form-field>
+                </div>
+                <div class="buttons">
+                    <button [disabled]="!userForm.valid" type="submit">Continuar</button>
+                    <button (click)="regresar()">Regresar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
