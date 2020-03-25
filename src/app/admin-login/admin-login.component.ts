@@ -45,14 +45,14 @@ export class AdminLoginComponent {
     this.itemTypeControl = new FormControl('');
     this.actionTypeControl = new FormControl('');
     this.adminForm = this.fb.group({
-      idControl: [''],
-      addressControl: [''],
-      nameControl: [''],
-      descriptionControl: [''],
-      priceControl: [''],
-      shelfControl: [''],
-      vaultControl: [''],
-      storeIdControl: [''],
+      idControl: ['', Validators.required],
+      addressControl: ['', Validators.required],
+      nameControl: ['', Validators.required],
+      descriptionControl: ['', Validators.required],
+      priceControl: [0, Validators.compose([Validators.pattern('[0-9]*'), Validators.required])],
+      shelfControl: [0, Validators.required],
+      vaultControl: [0, Validators.required],
+      storeIdControl: ['', Validators.required],
     })
   }
 
@@ -69,21 +69,43 @@ export class AdminLoginComponent {
   }
 
   resetForm() {
-    switch(this.itemType){
+    switch (this.itemType) {
       case 'Stores':
-        this.editMode ? this.adminForm.controls.idControl.setValidators(Validators.required) : this.adminForm.controls.idControl.clearValidators();
-        this.adminForm.controls.descriptionControl.clearValidators();
-        this.adminForm.controls.priceControl.clearValidators();
-        this.adminForm.controls.shelfControl.clearValidators();
-        this.adminForm.controls.vaultControl.clearValidators();
-        this.adminForm.controls.storeIdControl.clearValidators();
+        if (this.editMode) {
+          this.adminForm.controls.idControl.setValidators(Validators.required);
+          this.adminForm.controls.nameControl.clearValidators();
+          this.adminForm.controls.addressControl.clearValidators();
+        } else {
+          this.adminForm.controls.nameControl.setValidators(Validators.required);
+          this.adminForm.controls.addressControl.setValidators(Validators.required);
+          this.adminForm.controls.idControl.clearValidators();
+          this.adminForm.controls.descriptionControl.clearValidators();
+          this.adminForm.controls.priceControl.clearValidators();
+          this.adminForm.controls.shelfControl.clearValidators();
+          this.adminForm.controls.vaultControl.clearValidators();
+          this.adminForm.controls.storeIdControl.clearValidators();
+        }
         break;
       case 'Articles':
-        this.adminForm.controls.descriptionControl.setValidators(Validators.required);
-        this.adminForm.controls.priceControl.setValidators(Validators.required);
-        this.adminForm.controls.shelfControl.setValidators(Validators.required);
-        this.adminForm.controls.vaultControl.setValidators(Validators.required);
-        this.adminForm.controls.storeIdControl.setValidators(Validators.required);
+        if (this.editMode) {
+          this.adminForm.controls.idControl.setValidators(Validators.required)
+          this.adminForm.controls.descriptionControl.clearValidators();
+          this.adminForm.controls.addressControl.clearValidators();
+          this.adminForm.controls.nameControl.clearValidators();
+          this.adminForm.controls.priceControl.clearValidators();
+          this.adminForm.controls.shelfControl.clearValidators();
+          this.adminForm.controls.vaultControl.clearValidators();
+          this.adminForm.controls.storeIdControl.clearValidators();
+        } else {
+          this.adminForm.controls.addressControl.clearValidators();
+          this.adminForm.controls.idControl.clearValidators();
+          this.adminForm.controls.nameControl.setValidators(Validators.required);
+          this.adminForm.controls.descriptionControl.setValidators(Validators.required);
+          this.adminForm.controls.priceControl.setValidators(Validators.required);
+          this.adminForm.controls.shelfControl.setValidators(Validators.required);
+          this.adminForm.controls.vaultControl.setValidators(Validators.required);
+          this.adminForm.controls.storeIdControl.setValidators(Validators.required);
+        }
         break;
     }
     this.adminForm.reset();
@@ -93,8 +115,8 @@ export class AdminLoginComponent {
     let request: ArticleRequest;
     request = {
       id: this.id,
-      description: this.description,
-      name: this.name,
+      description: this.description ? this.description : '',
+      name: this.name ? this.name : '',
       price: this.price,
       total_in_shelf: this.total_in_shelf,
       total_in_vault: this.total_in_vault,
@@ -111,8 +133,8 @@ export class AdminLoginComponent {
     let request: StoreRequest;
     request = new StoreRequest({
       id: this.id,
-      name: this.name,
-      address: this.address
+      name: this.name ? this.name : '',
+      address: this.address ? this.address : ''
     })
     this.elipgoService.editStore(this.id, request).subscribe((response: StoresResponseModel) => {
       this.response = response;

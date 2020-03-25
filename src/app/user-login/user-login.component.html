@@ -2,10 +2,11 @@
     <div class="topBackground"></div>
     <div class="bottomBackground">
         <div class="box">
-            <label class="text">Hola! Por favor complete los campos requeridos.</label>
+            <label class="text">Hola! Por favor complete seleccione que tipo de informacion quiere.</label>
             <form [formGroup]="userForm" (ngSubmit)="submitItem()">
                 <div class="selects">
                     <mat-form-field appearance="fill">
+                        <mat-label>Select store / article: </mat-label>
                         <mat-select [(ngModel)]="itemType" [formControl]="itemTypeControl">
                             <mat-option value="Stores">Stores</mat-option>
                             <mat-option value="Articles">Articles</mat-option>
@@ -18,13 +19,13 @@
                         <input matInput [(ngModel)]="id" formControlName="idControl" type="number">
                     </mat-form-field>
                 </div>
+                <mat-form-field *ngIf="response" class="matTextArea" appearance="fill">
+                    <textarea matInput>{{response | json}}</textarea>
+                </mat-form-field>
                 <div class="buttons">
                     <button [disabled]="!userForm.valid" type="submit">Continuar</button>
                     <button (click)="regresar()">Regresar</button>
                 </div>
-                <mat-form-field *ngIf="response" class="matTextArea" appearance="fill">
-                    <textarea matInput>{{response | json}}</textarea>
-                </mat-form-field>
             </form>
         </div>
     </div>

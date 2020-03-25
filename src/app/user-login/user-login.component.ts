@@ -17,6 +17,7 @@ export class UserLoginComponent {
   idControl: FormControl;
   itemType: string;
   itemTypeControl: FormControl;
+  response: any;
 
   constructor(private elipgoService: ElipgoService, private fb: FormBuilder) {
     this.itemTypeControl = new FormControl('', Validators.required)
@@ -39,23 +40,19 @@ export class UserLoginComponent {
 
   getStoresList() {
     this.elipgoService.getStoresList().subscribe(response => {
-      console.log(response);
-      alert(response.stores);
-      return response;
+      this.response = response;
     });
   }
 
   getArticlesList() {
     this.elipgoService.getArticlesList().subscribe(response => {
-      console.log(response);
-      return response;
+      this.response = response;
     });
   }
 
   getArticlesByStore(id: number) {
     this.elipgoService.getArticlesByStore(id).subscribe(response => {
-      console.log(response);
-      return response;
+      this.response = response;
     });
   }
 

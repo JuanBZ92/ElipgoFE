@@ -1,1 +1,26 @@
 @import '../sccsVariables';
+
+.buttons {
+    display: inline-flex;
+    width: 100%;
+    margin-top: 5%;
+    button {
+        margin-right: 10%;
+    }
+}
+
+.mat-form-field {
+    padding-right: 11%;
+}
+
+.matTextArea {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 250px;
+    position: relative;
+    margin-left: 19%;
+    textarea {
+        height: 250px;
+    }
+}
