@@ -125,7 +125,7 @@ export class AdminLoginComponent {
     this.elipgoService.editArticle(this.id, request).subscribe(response => {
       this.response = response;
     }, error => {
-      console.log(error);
+      this.response = error;
     });
   }
 
@@ -139,7 +139,7 @@ export class AdminLoginComponent {
     this.elipgoService.editStore(this.id, request).subscribe((response: StoresResponseModel) => {
       this.response = response;
     }, error => {
-      console.log(error);
+      this.response = error;
     });
   }
 
@@ -156,7 +156,7 @@ export class AdminLoginComponent {
     this.elipgoService.addArticle(request).subscribe(response => {
       this.response = response;
     }, error => {
-      console.log(error);
+      this.response = error;
     });
   }
 
@@ -169,7 +169,7 @@ export class AdminLoginComponent {
     this.elipgoService.addStore(request).subscribe(response => {
       this.response = response;
     }, error => {
-      console.log(error);
+      this.response = error;
     });
   }
 

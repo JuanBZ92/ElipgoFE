@@ -41,18 +41,24 @@ export class UserLoginComponent {
   getStoresList() {
     this.elipgoService.getStoresList().subscribe(response => {
       this.response = response;
+    }, error => {
+      this.response = error;
     });
   }
 
   getArticlesList() {
     this.elipgoService.getArticlesList().subscribe(response => {
       this.response = response;
+    }, error => {
+      this.response = error;
     });
   }
 
   getArticlesByStore(id: number) {
     this.elipgoService.getArticlesByStore(id).subscribe(response => {
       this.response = response;
+    }, error => {
+      this.response = error;
     });
   }
 
