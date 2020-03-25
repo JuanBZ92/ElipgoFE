@@ -20,19 +20,16 @@
         </div>
         <div [ngSwitch]="itemType">
           <div *ngSwitchCase="'Stores'" class="Information">
-            <div *ngIf="editMode">
-              <mat-form-field appearance="fill">
-                <mat-label>Id: </mat-label>
-                <input matInput [(ngModel)]="id" [disabled]="!editMode" formControlName="idControl" type="number" required>
-              </mat-form-field>
-            </div>
             <div>
+              <mat-form-field *ngIf="editMode" appearance="fill">
+                <mat-label>Id: </mat-label>
+                <input matInput [(ngModel)]="id" [disabled]="!editMode" formControlName="idControl" type="number"
+                  required>
+              </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Address:</mat-label>
                 <input matInput [(ngModel)]="address" formControlName="addressControl" type="text" required>
               </mat-form-field>
-            </div>
-            <div>
               <mat-form-field appearance="fill">
                 <mat-label>Name:</mat-label>
                 <input matInput [(ngModel)]="name" formControlName="nameControl" type="text" required>
@@ -40,56 +37,45 @@
             </div>
           </div>
           <div *ngSwitchCase="'Articles'" class="Information">
-            <div *ngIf="editMode">
-              <mat-form-field appearance="fill">
+              <mat-form-field *ngIf="editMode" appearance="fill">
                 <mat-label>Id: </mat-label>
-                <input matInput [(ngModel)]="id" [disabled]="!editMode" formControlName="idControl" type="number" required>
+                <input matInput [(ngModel)]="id" [disabled]="!editMode" formControlName="idControl" type="number"
+                  required>
               </mat-form-field>
-            </div>
-            <div>
               <mat-form-field appearance="fill">
                 <mat-label>Description: </mat-label>
                 <input matInput [(ngModel)]="description" formControlName="descriptionControl" type="text" required>
               </mat-form-field>
-            </div>
-            <div>
               <mat-form-field appearance="fill">
                 <mat-label>Name:</mat-label>
                 <input matInput [(ngModel)]="name" formControlName="nameControl" type="text" required>
               </mat-form-field>
-            </div>
-            <div>
               <mat-form-field appearance="fill">
                 <mat-label>Price:</mat-label>
                 <input matInput [(ngModel)]="price" formControlName="priceControl" type="number" required>
               </mat-form-field>
-            </div>
-            <div>
               <mat-form-field appearance="fill">
                 <mat-label>Total In Shelf:</mat-label>
                 <input matInput [(ngModel)]="total_in_shelf" formControlName="shelfControl" type="number" required>
               </mat-form-field>
-            </div>
-            <div>
               <mat-form-field appearance="fill">
                 <mat-label>Total In Vault:</mat-label>
                 <input matInput [(ngModel)]="total_in_vault" formControlName="vaultControl" type="number" required>
               </mat-form-field>
-            </div>
-            <div>
               <mat-form-field appearance="fill">
                 <mat-label>Store Id:</mat-label>
                 <input matInput [(ngModel)]="store_id" formControlName="storeIdControl" type="number" required>
               </mat-form-field>
-            </div>
           </div>
         </div>
         <div class="buttons">
           <button [disabled]="!adminForm.valid" type="submit">Continuar</button>
           <button (click)="regresar()">Regresar</button>
         </div>
+        <mat-form-field *ngIf="response" class="matTextArea" appearance="fill">
+          <textarea matInput>{{response | json}}</textarea>
+        </mat-form-field>
       </form>
-      <textarea>{{response}}</textarea>
     </div>
   </div>
 </div>

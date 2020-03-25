@@ -22,6 +22,9 @@
                     <button [disabled]="!userForm.valid" type="submit">Continuar</button>
                     <button (click)="regresar()">Regresar</button>
                 </div>
+                <mat-form-field *ngIf="response" class="matTextArea" appearance="fill">
+                    <textarea matInput>{{response | json}}</textarea>
+                </mat-form-field>
             </form>
         </div>
     </div>

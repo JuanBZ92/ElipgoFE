@@ -25,7 +25,7 @@ input[type=number] {
 }
 .box {
     min-height: 25.5625rem;
-    max-width: 20rem;
+    max-width: 33rem;
     padding: 2rem 4rem;
     box-shadow: 0 0.0625rem 0.125rem 0
     rgba(0, 0, 0, 0.15);
@@ -63,7 +63,6 @@ input[type=number] {
     .buttons {
         display: inline-flex;
         width: 100%;
-        margin-top: 20%;
         button {
             background-color:#0070ffc4;;
             border-radius: 6px;
@@ -72,7 +71,6 @@ input[type=number] {
             border: none;
             color:white;
             font-weight: bold;
-            margin-right: 50%;
         }
         button:hover{
             background-color:#0070ff;;

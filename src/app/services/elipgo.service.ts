@@ -50,10 +50,10 @@ export class ElipgoService {
     );
   }
 
-  editStore(id: number, request: StoreRequest): Observable<StoresInformation[]> {
-    return this.http.put<StoresInformation[]>(this.packageUrl + `/stores/UpdateStore?id=${id}`, request, this.httpOptions).pipe(
+  editStore(id: number, request: StoreRequest): Observable<StoresResponseModel> {
+    return this.http.put<StoresResponseModel>(this.packageUrl + `/stores/UpdateStore?id=${id}`, request, this.httpOptions).pipe(
       catchError((error: any) => { throw this.handleError(error); }),
-      map(response => response as StoresInformation[])
+      map(response => { return response as StoresResponseModel })
     );
   }
 

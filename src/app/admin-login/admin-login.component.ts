@@ -4,8 +4,9 @@ import { FormGroup, FormBuilder, Validators, FormControl, Form } from '@angular/
 import { ElipgoService } from '../services/elipgo.service';
 import { StoreRequest } from '../models/StoreRequest';
 import { ArticleRequest } from '../models/ArticleRequest';
-import { StoresResponseModel, StoresInformation } from '../models/StoresResponseModel';
+import { StoresResponseModel } from '../models/StoresResponseModel';
 import { ArticlesResponseModel } from '../models/ArticlesResponseModel';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-admin-login',
@@ -27,7 +28,7 @@ export class AdminLoginComponent {
   store_id: number;
   address: string;
   adminForm: FormGroup;
-  response: StoresInformation[]; 
+  response: any;
 
   itemTypeControl: FormControl;
   actionTypeControl: FormControl;
@@ -68,7 +69,23 @@ export class AdminLoginComponent {
   }
 
   resetForm() {
-    this.editMode ? this.adminForm.controls.idControl.setValidators(Validators.required) : this.adminForm.controls.idControl.clearValidators();
+    switch(this.itemType){
+      case 'Stores':
+        this.editMode ? this.adminForm.controls.idControl.setValidators(Validators.required) : this.adminForm.controls.idControl.clearValidators();
+        this.adminForm.controls.descriptionControl.clearValidators();
+        this.adminForm.controls.priceControl.clearValidators();
+        this.adminForm.controls.shelfControl.clearValidators();
+        this.adminForm.controls.vaultControl.clearValidators();
+        this.adminForm.controls.storeIdControl.clearValidators();
+        break;
+      case 'Articles':
+        this.adminForm.controls.descriptionControl.setValidators(Validators.required);
+        this.adminForm.controls.priceControl.setValidators(Validators.required);
+        this.adminForm.controls.shelfControl.setValidators(Validators.required);
+        this.adminForm.controls.vaultControl.setValidators(Validators.required);
+        this.adminForm.controls.storeIdControl.setValidators(Validators.required);
+        break;
+    }
     this.adminForm.reset();
   }
 
@@ -84,7 +101,7 @@ export class AdminLoginComponent {
       store_id: this.store_id
     }
     this.elipgoService.editArticle(this.id, request).subscribe(response => {
-      alert(JSON.stringify(response));
+      this.response = response;
     }, error => {
       console.log(error);
     });
@@ -92,13 +109,12 @@ export class AdminLoginComponent {
 
   editStore() {
     let request: StoreRequest;
-    request = {
+    request = new StoreRequest({
       id: this.id,
       name: this.name,
       address: this.address
-    }
-    this.elipgoService.editStore(this.id, request).subscribe((response: StoresInformation[]) => {
-      alert(JSON.stringify(response));
+    })
+    this.elipgoService.editStore(this.id, request).subscribe((response: StoresResponseModel) => {
       this.response = response;
     }, error => {
       console.log(error);
@@ -116,7 +132,7 @@ export class AdminLoginComponent {
       store_id: this.store_id
     }
     this.elipgoService.addArticle(request).subscribe(response => {
-      alert(JSON.stringify(response));
+      this.response = response;
     }, error => {
       console.log(error);
     });
@@ -129,7 +145,7 @@ export class AdminLoginComponent {
       address: this.address
     }
     this.elipgoService.addStore(request).subscribe(response => {
-      alert(JSON.stringify(response));
+      this.response = response;
     }, error => {
       console.log(error);
     });

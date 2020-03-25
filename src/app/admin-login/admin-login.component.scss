@@ -3,3 +3,25 @@
 .selects {
     margin-top: 10%;
 }
+.buttons {
+    display: inline-flex;
+    width: 100%;
+    margin-top: 5%;
+    button {
+        margin-right: 60%;
+    }
+}
+
+.mat-form-field {
+    padding-right: 11%;
+}
+
+.matTextArea {
+    width: 50%;
+    height: 250px;
+    position: relative;
+    margin-left: 19%;
+    textarea {
+        height: 250px;
+    }
+}
