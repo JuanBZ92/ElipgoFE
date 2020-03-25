@@ -7,14 +7,14 @@
         <div class="selects">
           <mat-form-field appearance="fill">
             <mat-label>Select store / articles: </mat-label>
-            <mat-select [(ngModel)]="itemType" (selectionChange)="resetForm()" [formControl]="itemTypeControl">
+            <mat-select [(ngModel)]="itemType" ngDefaultControl (selectionChange)="resetForm()" [formControl]="itemTypeControl">
               <mat-option value="Stores">Stores</mat-option>
               <mat-option value="Articles">Articles</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field appearance="fill">
             <mat-label>Select add / edit: </mat-label>
-            <mat-select [(ngModel)]="actionType" (selectionChange)="resetForm()" [formControl]="actionTypeControl">
+            <mat-select [(ngModel)]="actionType" ngDefaultControl (selectionChange)="resetForm()" [formControl]="actionTypeControl">
               <mat-option value="Add">Add</mat-option>
               <mat-option value="Edit">Edit</mat-option>
             </mat-select>
@@ -25,48 +25,48 @@
             <div>
               <mat-form-field *ngIf="editMode" appearance="fill">
                 <mat-label>Id: </mat-label>
-                <input matInput [(ngModel)]="id" [disabled]="!editMode" formControlName="idControl" type="number"
+                <input matInput [(ngModel)]="id" ngDefaultControl [disabled]="!editMode" formControlName="idControl" type="number"
                 >
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Address:</mat-label>
-                <input matInput [(ngModel)]="address" formControlName="addressControl" type="text">
+                <input matInput [(ngModel)]="address" ngDefaultControl formControlName="addressControl" type="text">
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Name:</mat-label>
-                <input matInput [(ngModel)]="name" formControlName="nameControl" type="text">
+                <input matInput [(ngModel)]="name" ngDefaultControl formControlName="nameControl" type="text">
               </mat-form-field>
             </div>
           </div>
           <div *ngSwitchCase="'Articles'" class="Information">
               <mat-form-field *ngIf="editMode" appearance="fill">
                 <mat-label>Id: </mat-label>
-                <input matInput [(ngModel)]="id" [disabled]="!editMode" formControlName="idControl" type="number"
+                <input matInput [(ngModel)]="id" ngDefaultControl [disabled]="!editMode" formControlName="idControl" type="number"
                 >
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Description: </mat-label>
-                <input matInput [(ngModel)]="description" formControlName="descriptionControl" type="text">
+                <input matInput [(ngModel)]="description" ngDefaultControl formControlName="descriptionControl" type="text">
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Name:</mat-label>
-                <input matInput [(ngModel)]="name" formControlName="nameControl" type="text">
+                <input matInput [(ngModel)]="name" ngDefaultControl formControlName="nameControl" type="text">
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Price:</mat-label>
-                <input matInput [(ngModel)]="price" formControlName="priceControl" type="number">
+                <input matInput [(ngModel)]="price" ngDefaultControl formControlName="priceControl" type="number">
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Total In Shelf:</mat-label>
-                <input matInput [(ngModel)]="total_in_shelf" formControlName="shelfControl" type="number">
+                <input matInput [(ngModel)]="total_in_shelf" ngDefaultControl formControlName="shelfControl" type="number">
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Total In Vault:</mat-label>
-                <input matInput [(ngModel)]="total_in_vault" formControlName="vaultControl" type="number">
+                <input matInput [(ngModel)]="total_in_vault" ngDefaultControl formControlName="vaultControl" type="number">
               </mat-form-field>
               <mat-form-field *ngIf="!editMode" appearance="fill">
                 <mat-label>Store Id:</mat-label>
-                <input matInput [(ngModel)]="store_id" formControlName="storeIdControl" type="number">
+                <input matInput [(ngModel)]="store_id" ngDefaultControl formControlName="storeIdControl" type="number">
               </mat-form-field>
           </div>
         </div>

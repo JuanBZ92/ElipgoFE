@@ -5,10 +5,10 @@
             <label class="text">Hola! Por favor ingrese su usuario y contraseña.</label>
             <form [formGroup]="userAccess" (ngSubmit)="login()">
                 <div class="inputs">
-                    <input type="text" formControlName="username" placeholder="Usuario o Email" required>
+                    <input type="text" formControlName="username" ngDefaultControl placeholder="Usuario o Email" required>
                 </div>
                 <div class="inputs">
-                    <input type="password" formControlName="password"  placeholder="Contraseña" required>
+                    <input type="password" formControlName="password" ngDefaultControl  placeholder="Contraseña" required>
                 </div>
                 <p *ngIf="showError">{{error | json}}</p>
                 <div class="buttons">

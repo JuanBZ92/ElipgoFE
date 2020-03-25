@@ -16,8 +16,4 @@ export class ArticlesInformation {
     total_in_shelf: number;
     total_in_vault: number;
     store_Id: string;
-
-    constructor(rawJson?: any) {
-        Object.assign(this, rawJson);
-    }
 }

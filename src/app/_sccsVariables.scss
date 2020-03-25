@@ -25,16 +25,21 @@ input[type=number] {
 }
 .box {
     min-height: 30%;
-    max-width: 50%;
-    padding: 2rem 4rem;
+    max-width: 25%;
+    width: 25%;
+    padding: 2% 3%;
     box-shadow: 0 0.0625rem 0.125rem 0
     rgba(0, 0, 0, 0.15);
-    left: 40%;
+    left: 35%;
     top: 20%;
     background-color:white;
     z-index: 2;
     position: absolute;
 
+    .selects {
+        margin-top: 10%;
+        width: 100%;
+    }
     .text {
         font-size: 1.5rem;
         font-weight: 600;
@@ -63,6 +68,7 @@ input[type=number] {
     .buttons {
         display: inline-flex;
         width: 100%;
+        margin-top: 5%;
         button {
             background-color:#0070ffc4;;
             border-radius: 6px;
@@ -78,6 +84,18 @@ input[type=number] {
         button:disabled{
             background-color: grey;
             cursor: not-allowed;
+        }
+    }    
+    .mat-form-field {
+        padding-right: 7%;
+    }    
+    .matTextArea {
+        width: 55%;
+        height: 250px;
+        position: relative;
+        margin-left: 19%;
+        textarea {
+            height: 250px;
         }
     }
 }

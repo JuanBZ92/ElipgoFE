@@ -1,12 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { LoginModel } from '../models/LoginModel';
-import { FormGroup, FormBuilder, Validators, FormControl, Form } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ElipgoService } from '../services/elipgo.service';
 import { StoreRequest } from '../models/StoreRequest';
 import { ArticleRequest } from '../models/ArticleRequest';
 import { StoresResponseModel } from '../models/StoresResponseModel';
-import { ArticlesResponseModel } from '../models/ArticlesResponseModel';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-admin-login',
@@ -29,6 +27,8 @@ export class AdminLoginComponent {
   address: string;
   adminForm: FormGroup;
   response: any;
+  storeRequest: StoreRequest;
+  articleRequest: ArticleRequest;
 
   itemTypeControl: FormControl;
   actionTypeControl: FormControl;
@@ -42,8 +42,6 @@ export class AdminLoginComponent {
   addressControl: FormControl;
 
   constructor(private elipgoService: ElipgoService, private fb: FormBuilder) {
-    this.itemTypeControl = new FormControl('');
-    this.actionTypeControl = new FormControl('');
     this.adminForm = this.fb.group({
       idControl: ['', Validators.required],
       addressControl: ['', Validators.required],
@@ -54,6 +52,8 @@ export class AdminLoginComponent {
       vaultControl: [0, Validators.required],
       storeIdControl: ['', Validators.required],
     })
+    this.itemTypeControl = new FormControl('');
+    this.actionTypeControl = new FormControl('');
   }
 
   get editMode() {
@@ -97,8 +97,8 @@ export class AdminLoginComponent {
           this.adminForm.controls.vaultControl.clearValidators();
           this.adminForm.controls.storeIdControl.clearValidators();
         } else {
-          this.adminForm.controls.addressControl.clearValidators();
           this.adminForm.controls.idControl.clearValidators();
+          this.adminForm.controls.addressControl.setValidators(Validators.required);
           this.adminForm.controls.nameControl.setValidators(Validators.required);
           this.adminForm.controls.descriptionControl.setValidators(Validators.required);
           this.adminForm.controls.priceControl.setValidators(Validators.required);
@@ -112,8 +112,7 @@ export class AdminLoginComponent {
   }
 
   editArticle() {
-    let request: ArticleRequest;
-    request = {
+    this.articleRequest = {
       id: this.id,
       description: this.description ? this.description : '',
       name: this.name ? this.name : '',
@@ -122,7 +121,7 @@ export class AdminLoginComponent {
       total_in_vault: this.total_in_vault,
       store_id: this.store_id
     }
-    this.elipgoService.editArticle(this.id, request).subscribe(response => {
+    this.elipgoService.editArticle(this.id, this.articleRequest).subscribe(response => {
       this.response = response;
     }, error => {
       this.response = error;
@@ -130,13 +129,12 @@ export class AdminLoginComponent {
   }
 
   editStore() {
-    let request: StoreRequest;
-    request = new StoreRequest({
+    this.storeRequest = {
       id: this.id,
       name: this.name ? this.name : '',
       address: this.address ? this.address : ''
-    })
-    this.elipgoService.editStore(this.id, request).subscribe((response: StoresResponseModel) => {
+    }
+    this.elipgoService.editStore(this.id, this.storeRequest).subscribe((response: StoresResponseModel) => {
       this.response = response;
     }, error => {
       this.response = error;
@@ -144,8 +142,7 @@ export class AdminLoginComponent {
   }
 
   addArticle() {
-    let request: ArticleRequest;
-    request = {
+    this.articleRequest = {
       description: this.description,
       name: this.name,
       price: this.price,
@@ -153,7 +150,7 @@ export class AdminLoginComponent {
       total_in_vault: this.total_in_vault,
       store_id: this.store_id
     }
-    this.elipgoService.addArticle(request).subscribe(response => {
+    this.elipgoService.addArticle(this.articleRequest).subscribe(response => {
       this.response = response;
     }, error => {
       this.response = error;
@@ -161,12 +158,11 @@ export class AdminLoginComponent {
   }
 
   addStore() {
-    let request: StoreRequest;
-    request = {
+    this.storeRequest = {
       name: this.name,
       address: this.address
     }
-    this.elipgoService.addStore(request).subscribe(response => {
+    this.elipgoService.addStore(this.storeRequest).subscribe(response => {
       this.response = response;
     }, error => {
       this.response = error;

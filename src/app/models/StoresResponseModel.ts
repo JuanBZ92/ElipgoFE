@@ -13,7 +13,4 @@ export class StoresInformation {
     address: string;
     name: string;
 
-    constructor(rawJson?: any) {
-        Object.assign(this, rawJson);
-    }
 }

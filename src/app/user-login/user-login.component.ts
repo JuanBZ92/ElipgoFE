@@ -20,10 +20,10 @@ export class UserLoginComponent {
   response: any;
 
   constructor(private elipgoService: ElipgoService, private fb: FormBuilder) {
-    this.itemTypeControl = new FormControl('', Validators.required)
     this.userForm = this.fb.group({
       idControl: [''],
     })
+    this.itemTypeControl = new FormControl('', Validators.required)
   }
 
   submitItem() {
