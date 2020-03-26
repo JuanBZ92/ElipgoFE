@@ -13,6 +13,9 @@ import { StoresResponseModel } from '../models/StoresResponseModel';
 })
 export class AdminLoginComponent {
 
+
+  // use un mix de template drive y reactive forms para mostrar diferentes tecnicas.
+
   @Output() returnAccess: EventEmitter<LoginModel> = new EventEmitter();
   @Input() loginAccess: LoginModel;
   itemType: string;

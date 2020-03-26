@@ -10,6 +10,8 @@ import { ElipgoService } from '../services/elipgo.service';
 })
 export class UserLoginComponent {
 
+    // use un mix de template drive y reactive forms para mostrar diferentes tecnicas.
+
   @Output() returnAccess: EventEmitter<LoginModel> = new EventEmitter();
   @Input() loginAccess: LoginModel;
   userForm: FormGroup;
