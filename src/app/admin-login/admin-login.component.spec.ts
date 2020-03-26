@@ -97,7 +97,6 @@ describe('AdminLoginComponent', () => {
     component.itemType = 'Articles';
     component.actionType = 'Add';
     component.adminForm.controls.descriptionControl.markAsTouched();
-    component.adminForm.controls.addressControl.markAsTouched();
     component.adminForm.controls.nameControl.markAsTouched();
     component.adminForm.controls.priceControl.markAsTouched();
     component.adminForm.controls.vaultControl.markAsTouched();
@@ -105,7 +104,6 @@ describe('AdminLoginComponent', () => {
     component.adminForm.controls.storeIdControl.markAsTouched();
     component.resetForm();
     expect(component.adminForm.controls.descriptionControl.invalid).toBe(true);
-    expect(component.adminForm.controls.addressControl.invalid).toBe(true);
     expect(component.adminForm.controls.nameControl.invalid).toBe(true);
     expect(component.adminForm.controls.priceControl.invalid).toBe(true);
     expect(component.adminForm.controls.vaultControl.invalid).toBe(true);

@@ -98,7 +98,7 @@ export class AdminLoginComponent {
           this.adminForm.controls.storeIdControl.clearValidators();
         } else {
           this.adminForm.controls.idControl.clearValidators();
-          this.adminForm.controls.addressControl.setValidators(Validators.required);
+          this.adminForm.controls.addressControl.clearValidators();
           this.adminForm.controls.nameControl.setValidators(Validators.required);
           this.adminForm.controls.descriptionControl.setValidators(Validators.required);
           this.adminForm.controls.priceControl.setValidators(Validators.required);

@@ -14,7 +14,7 @@ import { ArticleRequest } from '../models/ArticleRequest';
 })
 export class ElipgoService {
 
-  packageUrl = 'http://localhost:5000/api/services';  // URL to web api
+  packageUrl = 'https://elipgoapi.azure-api.net/api/services';  // URL to web api
 
   constructor(private http: HttpClient) { }
 
