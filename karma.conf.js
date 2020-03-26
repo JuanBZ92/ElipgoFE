@@ -15,6 +15,13 @@ module.exports = function (config) {
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
+    browsers: ['Chrome'], // You may use 'ChromeCanary', 'Chromium' or any other supported browser
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox', '--disable-gpu']
+      }
+    },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, './coverage/elipgoFE'),
       reports: ['html', 'lcovonly', 'text-summary'],
@@ -26,7 +33,7 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false,
+    singleRun: true,
     restartOnFileChange: true
   });
 };
