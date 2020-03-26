@@ -2,7 +2,7 @@
     <div class="topBackground"></div>
     <div class="bottomBackground">
         <div class="box">
-            <label class="text">Hola! Por favor complete seleccione que tipo de informacion quiere.</label>
+            <label class="text">Please choose the kind of information.</label>
             <form [formGroup]="userForm" (ngSubmit)="submitItem()">
                 <div class="selects">
                     <mat-form-field appearance="fill">
@@ -21,8 +21,8 @@
                     <textarea matInput>{{response | json}}</textarea>
                 </mat-form-field>
                 <div class="buttons">
-                    <button [disabled]="!userForm.valid" type="submit">Continuar</button>
-                    <button (click)="regresar()">Regresar</button>
+                    <button (click)="regresar()">Back</button>
+                    <button [disabled]="!userForm.valid" type="submit">Search</button>
                 </div>
             </form>
         </div>

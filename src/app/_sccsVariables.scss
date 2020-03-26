@@ -39,6 +39,8 @@ input[type=number] {
     .selects {
         margin-top: 10%;
         width: 100%;
+        display: flex;
+        justify-content: space-between;
     }
     .text {
         font-size: 1.5rem;
@@ -47,27 +49,20 @@ input[type=number] {
         color:rgba(0,0,0,.8);
         overflow-wrap: break-word;
     }
-    
-    input {
-        margin-top: 10%;
-        border: 0 transparent;
-        border-bottom: 1px solid #00000045;
-        width: 100%;
-        height: 25px;
-    }
     input:hover {
         border-bottom: 2px solid black;
         transition: .15s ease-out;
     }
     .buttons {
-        display: inline-flex;
+        display: flex;
         width: 100%;
         margin-top: 5%;
+        justify-content: space-between;
         button {
             background-color:#0070ffc4;;
             border-radius: 6px;
-            width: 50%;
             height: 50px;
+            width: 20%;
             border: none;
             color:white;
             font-weight: bold;
@@ -80,16 +75,13 @@ input[type=number] {
             cursor: not-allowed;
         }
     }    
-    .mat-form-field {
-        padding-right: 7%;
-    }    
     .matTextArea {
         width: 55%;
-        height: 250px;
+        height: 200px;
         position: relative;
-        margin-left: 19%;
+        margin-left: 22%;
         textarea {
-            height: 250px;
+            height: 200px;
         }
     }
 }

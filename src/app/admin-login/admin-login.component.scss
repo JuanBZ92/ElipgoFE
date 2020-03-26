@@ -1,5 +1,7 @@
 @import '../sccsVariables';
 
-button {
-    margin-right: 60%;
+.information {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
 }
