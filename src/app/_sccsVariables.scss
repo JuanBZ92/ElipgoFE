@@ -1,27 +1,25 @@
-$desktop: 960px;
-$tablet: 768px;
-$mobile-large: 640px;
-$mobile: 480px;
-$mobile-small: 300px;
-
 .container {
-    width: 100vw;
-    height: 100vh;
-    form {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 5%;
+    width: 100%;
+    height: 100%;
+    @media only screen and (max-height: 1000px){
+        overflow: auto;
+    }
+    @media only screen and (max-height: 100vh){
+        overflow: hidden;
     }
 }
 .topBackground {
     background-color: purple;
     width: 100%;
     height: 30%;
+    position: absolute;
 }
 .bottomBackground {
     background-color: black;
     width: 100%;
-    height: 100%;
+    height: fit-content;
+    min-height: 100%;
+    padding-top: 17vh;
 }
 
 input::-webkit-outer-spin-button,
@@ -34,26 +32,34 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
 .box {
-    min-height: 30%;
-    text-align: center;
-  @media only screen and (max-width: 100vw){
-    max-width: 25%;
+    @media only screen and (max-width: 100vw){
+        max-width: 25%;
+        min-height: 30%;
     }
     @media only screen and (max-width: 800px){
         max-width: 65%;
+        min-height: 20%;
     }
     @media only screen and (max-width: 400px){
         max-width: 50%;
+        min-height: 15%;
     }
-    top: -10%;
+    text-align: center;
+    position: relative;
     padding: 2% 3%;
+    margin: 0 auto;
     box-shadow: 0 0.0625rem 0.125rem 0
     rgba(0, 0, 0, 0.15);
-    margin: 0 auto;
     background-color:white;
-    z-index: 2;
-    position: relative;
+    z-index: 999;
+
+    form {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5%;
+    }
 
     .selects {
         margin-top: 10%;
