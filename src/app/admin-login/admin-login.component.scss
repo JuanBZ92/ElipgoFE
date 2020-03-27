@@ -1,7 +1,14 @@
 @import '../sccsVariables';
 
-.information {
+form {
     flex-wrap: wrap;
-    display: flex;
-    justify-content: space-between;
+    .switch {
+        width: 100%;
+    }
+    .information {
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
 }

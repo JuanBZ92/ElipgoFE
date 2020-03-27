@@ -5,7 +5,6 @@
     <div class="box">
       <label class="text">Please complete dropwdowns to search.</label>
       <form [formGroup]="adminForm" (ngSubmit)="submitItem()">
-        <div class="selects">
           <mat-form-field appearance="fill">
             <mat-label>Select store / articles: </mat-label>
             <mat-select [(ngModel)]="itemType" ngDefaultControl (selectionChange)="resetForm()"
@@ -22,8 +21,7 @@
               <mat-option value="Edit">Edit</mat-option>
             </mat-select>
           </mat-form-field>
-        </div>
-        <div [ngSwitch]="itemType">
+        <div class="switch"[ngSwitch]="itemType">
           <div *ngSwitchCase="'Stores'">
             <div *ngIf="actionType" class="information">
               <mat-form-field *ngIf="editMode" appearance="fill">

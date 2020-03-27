@@ -4,19 +4,17 @@
         <div class="box">
             <label class="text">Please choose the kind of information.</label>
             <form [formGroup]="userForm" (ngSubmit)="submitItem()">
-                <div class="selects">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Select store / article: </mat-label>
-                        <mat-select [(ngModel)]="itemType" ngDefaultControl [formControl]="itemTypeControl">
-                            <mat-option value="Stores">Stores</mat-option>
-                            <mat-option value="Articles">Articles</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field *ngIf="itemType === 'Articles'" appearance="fill">
-                        <mat-label>Store Id: </mat-label>
-                        <input matInput [(ngModel)]="id" ngDefaultControl formControlName="idControl" type="number">
-                    </mat-form-field>
-                </div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Select store / article: </mat-label>
+                    <mat-select [(ngModel)]="itemType" ngDefaultControl [formControl]="itemTypeControl">
+                        <mat-option value="Stores">Stores</mat-option>
+                        <mat-option value="Articles">Articles</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field *ngIf="itemType === 'Articles'" appearance="fill">
+                    <mat-label>Store Id: </mat-label>
+                    <input matInput [(ngModel)]="id" ngDefaultControl formControlName="idControl" type="number">
+                </mat-form-field>
                 <mat-form-field *ngIf="response" class="matTextArea" appearance="fill">
                     <textarea matInput>{{response | json}}</textarea>
                 </mat-form-field>
